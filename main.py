@@ -1722,3 +1722,4 @@ while True:
         ss = ss + int(dic[lst[0]][1])*int(lst[1])
         dic[lst[0]][2] = int(dic[lst[0]][2]) - int(lst[1])
 
+# task
