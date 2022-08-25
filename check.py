@@ -4,6 +4,9 @@
 # или для него не будет еды. Напишите виртуальные методы поедания и определения
 # состояния живого существа (живой или нет, в зависимости от достижения
 # предельного возраста и наличия еды (входной параметр)).
+import random
+
+
 class Alive:
     def __init__(self, count):
         self.count = count
@@ -50,6 +53,9 @@ class Rabbits(Alive):
     def be_eatten(self,number):
         self.count -= number
 
+    def shooted(self,n):
+        self.count -=n
+
 
 class Fox(Alive):
     def __init__(self, koef_repr,koef_death, count, dinner):
@@ -69,6 +75,9 @@ class Fox(Alive):
 
     def take_away(self,count_rabbits):
         self.count -= count_rabbits
+
+    def shooted(self,n):
+        self.count -=n
 
 
 plants = Plants(10, 200)
@@ -94,6 +103,14 @@ while year < 10:
     foxes.reproduction()
     rabbits.take_away(foxes.count*foxes.dinner)
 
+    a = random.randint(0,50)
+    rabbits.shooted(a)
+
+    b = random.randint(0,50)
+    foxes.shooted(b)
+
+    print(a,' rabbits were shooted this year.')
+    print(b,' foxes were shooted this year.')
 
     if plants.count // 10  <= rabbits.count:
         print("System is not in balace!!! Warning!!!!!!!")
